@@ -1,0 +1,19 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<form>
+    <select name="stores" onchange="getStore(this.value)" id="stores">
+        <option value="">Select a Store:</option>
+
+    </select>
+</form>
+<button onclick="resetStorage()">Reset Localstorage</button>
+<br>
+<div id="storeinfo"><b>Store info will be displayed here</b></div>
+
+</body>
+</html>
