@@ -22,22 +22,15 @@ $(document).ready(function () {
 
 function getStore(id) {
     $(document).ready(function () {
-        localStorage.setItem("store", id);
         let filiale = JSON.parse(localStorage.getItem(id));
 
-        if (filiale == null) {
-            $.getJSON("https://gibm.becknet.ch/warenhaus/getFiliale.php?format=JSON&filiale=" + id)
-                .done(function (data) {
-                    var data = data[0];
-                    localStorage.setItem(id, JSON.stringify(data))
-                    $('#storeinfo').html("<table><tr><th>Stadt</th><th>Strasse</th><th>&Ouml;ffnungszeiten</th></tr><tr><td>"
-                        + data.stadt + "</td><td>" + data.strasse + "</td> <td>" + data.oeffnungszeiten + "</td></tr></table>");
-                });
-        } else {
-            $('#storeinfo').html("<table><tr><th>Stadt</th><th>Strasse</th><th>&Ouml;ffnungszeiten</th></tr><tr><td>"
-                + filiale.stadt + "</td><td>" + filiale.strasse + "</td> <td>" + filiale.oeffnungszeiten + "</td></tr></table>");
-        }
-    })
+        $.getJSON("https://gibm.becknet.ch/warenhaus/getFiliale.php?format=JSON&filiale=" + id)
+            .done(function (data) {
+                var data = data[0];
+                $('#storeinfo').html("<table><tr><th>Stadt</th><th>Strasse</th><th>&Ouml;ffnungszeiten</th></tr><tr><td>"
+                    + data.stadt + "</td><td>" + data.strasse + "</td> <td>" + data.oeffnungszeiten + "</td></tr></table>");
+            });
+    });
 }
 
 function resetStorage() {
